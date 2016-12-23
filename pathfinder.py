@@ -134,6 +134,11 @@ class PathFinder(object):
         
         def __cmp__(self, other):
             return cmp(self.f_cost, other.f_cost)
+
+        # In Python3, when keys are equal, Python resorts to comparing the values
+        # by call to __lt__
+        def __lt__(self, other):
+            return int(self.f_cost) < int(other.f_cost)
         
         def __hash__(self):
             return hash(self.coord)
