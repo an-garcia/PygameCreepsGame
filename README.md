@@ -1,6 +1,7 @@
 Pygame Creeps Game
 ==================
 
+![alt tag](https://github.com/an-garcia/PygameCreepsGame/blob/master/images/creeps_game.png)
 
 Python Pygame game based on Based on [Eli Bendersky's pygame-tutorial](http://inventwithpython.com/blog/2010/09/01/the-top-10-pygame-tutorials/).
 A complete simulation of creeps, round creatures that move around the screen, bouncing off walls and changing their direction from time to time.
