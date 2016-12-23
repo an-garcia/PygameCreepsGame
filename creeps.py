@@ -327,7 +327,7 @@ class Game(object):
         ('images/pinkcreep_0.png', 'images/pinkcreep_45.png'),
     ]
     
-    MAX_N_CREEPS = 50
+    MAX_N_CREEPS = 20
 
     def __init__(self):
         pygame.init()
@@ -409,7 +409,6 @@ class Game(object):
         self.create_walls()
         
         # Create the grid-path representation of the field
-        #
         self.grid_nrows = int(self.FIELD_SIZE[1] / self.GRID_SIZE)
         self.grid_ncols = int(self.FIELD_SIZE[0] / self.GRID_SIZE)
         self.goal_coord = (self.grid_nrows - 1, self.grid_ncols - 1)
@@ -427,22 +426,23 @@ class Game(object):
     def create_walls(self):
         walls_list = []
         
-        for r in range(0, 15):
-            walls_list.append((r, 6))
-            
-            if r != 7:
+        for r in range(0, 16):
+            if r != 7 and r != 8:
                 walls_list.append((r, 3))
                 walls_list.append((r, 4))
-            
-            if r > 4:
-                walls_list.append((r, 1))
         
         for r in range(9, 20):
             walls_list.append((r, 10))
+            walls_list.append((r, 11))
+            
+        for c in range(9, 18):
+            walls_list.append((3, c))
+            walls_list.append((4, c))
         
         for c in range(14, 18):
             walls_list.append((15, c))
-        
+            walls_list.append((14, c))
+
         self.walls = dict().fromkeys(walls_list, True)
     
     def next_on_path(self, coord):
@@ -509,7 +509,7 @@ class Game(object):
         entrance_sf.fill(Color(10, 250, 10))
         entrance_sf.set_alpha(150)
         self.screen.blit(entrance_sf, self.entrance_rect)
-        
+
         exit_sf = pygame.Surface((self.exit_rect.w, self.exit_rect.h))
         exit_sf.fill(Color(250, 10, 10))
         exit_sf.set_alpha(150)
