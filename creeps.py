@@ -331,6 +331,7 @@ class Game(object):
 
     def __init__(self):
         pygame.init()
+        pygame.display.set_caption("Creeps Game")
         
         self.screen = pygame.display.set_mode(
                         (self.SCREEN_WIDTH, self.SCREEN_HEIGHT), 0, 32)
@@ -341,7 +342,7 @@ class Game(object):
         field_outer_width = self.FIELD_SIZE[0] + 2 * self.field_border_width
         field_outer_height = self.FIELD_SIZE[1] + 2 * self.field_border_width
         self.field_rect_outer = Rect(20, 60, field_outer_width, field_outer_height)
-        self.field_bgcolor = Color(109, 41, 1, 100)
+        self.field_bgcolor = Color(0, 0, 0, 100)
         self.field_border_color = Color(0, 0, 0)
         self.field_box = Box(self.screen, 
             rect=self.field_rect_outer, 
@@ -349,9 +350,9 @@ class Game(object):
             border_width=self.field_border_width,
             border_color=self.field_border_color)
         
-        self.tboard_text = ['The amazing Creeps!']
+        self.tboard_text = ['Hunt the creeps']
         self.tboard_rect = Rect(20, 20, field_outer_width, 30)
-        self.tboard_bgcolor = Color(50, 20, 0)
+        self.tboard_bgcolor = Color(0, 0, 0)
         self.tboard = MessageBoard(self.screen,
             rect=self.tboard_rect,
             bgcolor=self.tboard_bgcolor,
@@ -363,7 +364,7 @@ class Game(object):
         
         self.mboard_text = []
         self.mboard_rect = Rect(440, 60, 120, 60)
-        self.mboard_bgcolor = Color(50, 20, 0)
+        self.mboard_bgcolor = Color(0, 0, 0)
         self.mboard = MessageBoard(self.screen,
             rect=self.mboard_rect,
             bgcolor=self.mboard_bgcolor,
@@ -505,12 +506,12 @@ class Game(object):
     
     def draw_portals(self):
         entrance_sf = pygame.Surface((self.entrance_rect.w, self.entrance_rect.h))
-        entrance_sf.fill(Color(80, 200, 80))
+        entrance_sf.fill(Color(10, 250, 10))
         entrance_sf.set_alpha(150)
         self.screen.blit(entrance_sf, self.entrance_rect)
         
         exit_sf = pygame.Surface((self.exit_rect.w, self.exit_rect.h))
-        exit_sf.fill(Color(200, 80, 80))
+        exit_sf.fill(Color(250, 10, 10))
         exit_sf.set_alpha(150)
         self.screen.blit(exit_sf, self.exit_rect) 
     
@@ -530,7 +531,7 @@ class Game(object):
                 (self.field_rect.left + x * self.GRID_SIZE - 1, self.field_rect.bottom - 1))
     
     def draw_walls(self):
-        wallcolor = Color(140, 140, 140)
+        wallcolor = Color(250, 250, 250)
         
         for wall in self.walls:
             nrow, ncol = wall
