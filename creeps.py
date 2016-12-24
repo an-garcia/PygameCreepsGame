@@ -420,8 +420,7 @@ class Game(object):
         for wall in self.walls:
             self.gridpath.set_blocked(wall)
     
-        self.options = dict(
-            draw_grid=False)
+        self.options = dict(draw_grid=True)
     
     def create_walls(self):
         walls_list = []
@@ -456,7 +455,7 @@ class Game(object):
         """ Convert a (x, y) pair to a (nrow, ncol) coordinate
         """
         x, y = (pos[0] - self.field_rect.left, pos[1] - self.field_rect.top)
-        return (int(y) / self.GRID_SIZE, int(x) / self.GRID_SIZE)
+        return (int(y / self.GRID_SIZE), int(x / self.GRID_SIZE))
     
     def coord2xy_mid(self, coord):
         """ Convert a (nrow, ncol) coordinate to a (x, y) pair,
@@ -606,7 +605,6 @@ class Game(object):
                 msg2 = ''
 
                 self.mboard_text = [msg1, msg2]
-                
                 self.creep_spawn_timer.update(time_passed)
                 
                 # Update and all creeps
