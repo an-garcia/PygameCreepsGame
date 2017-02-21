@@ -3,3 +3,10 @@
 
 # Python cache
 __pycache__
+
+
+Add .gitignore file
+
+- Add .gitignore file
+- Remove generated files
+- Register project under git in AndroidStudio.
